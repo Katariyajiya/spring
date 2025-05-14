@@ -1,0 +1,51 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           https://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/util
+           https://www.springframework.org/schema/util/spring-util.xsd
+           ">
+
+          <util:list list-class="java.util.LinkedList" id="mybestfriends">
+              <value>Aman</value>
+              <value>Raman</value>
+              <value>Pavan</value>
+              <value>Naman</value>
+          </util:list>
+
+          <util:map map-class="java.util.TreeMap" id="InstituteFeeStructure">
+              <entry key="Spring Framework" value="8000"/>
+              <entry key="Django" value="5000"/>
+              <entry key="flutter" value="10000"/>
+              <entry key="KMP" value="15000"/>
+          </util:map>
+
+        <util:properties id="dbconfig" >
+            <prop key="driver"> com.mysql.jdbc.Driver</prop>
+            <prop key="username"> Jiya</prop>
+            <prop key="password">jiya124</prop>
+            <prop key="url">msql:jdbc://localhost:3306/database </prop>
+        </util:properties>
+
+
+      <bean class="com.springcore.standalonecollections.People" name="people1">
+          <property name="friends">
+              <ref bean="mybestfriends" />
+          </property>
+      </bean>
+
+    <bean class="com.springcore.standalonecollections.People" name="people2">
+        <property name="feestructure">
+            <ref bean="InstituteFeeStructure"/>
+        </property>
+        <property name="properties" ref="dbconfig" />
+    </bean>
+
+</beans>
+
